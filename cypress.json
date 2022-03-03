@@ -1,5 +1,5 @@
 {
   "testFiles": ["**/*.{feature,features}"],
   "ignoreTestFiles": "*.ts",
-  "baseUrl": "https://beta-app.jamclout.com/"
+  "baseUrl": "http://admin-staging.aonewallet.com/"
 }
