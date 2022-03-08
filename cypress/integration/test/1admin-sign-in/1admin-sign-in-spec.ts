@@ -4,15 +4,14 @@ import { Given, When, Then } from "cypress-cucumber-preprocessor/steps";
 
 beforeEach(()=> {
 
-  cy.visit(`${Cypress.config().baseUrl}/signin`)
-  cy.wait(10000)
+  cy.visit(`${Cypress.config().baseUrl}/signin`, {timeout:30000})
   cy.get('.ant-legacy-form-item-children').eq(0).type('admin117')
   cy.get('.ant-legacy-form-item-children').eq(1).type('password')
-  cy.get('.mb-2').find('.ant-btn').click()
-  cy.wait(10000)
+  cy.get('.mb-2', {timeout:30000}).find('.ant-btn').click()
+  
   cy.get('.ant-tabs-tab-btn', {timeout:30000}).eq(0)
     .find('.d-inline-block').should("have.text", "Dashboard")
-  cy.wait(15000)
+  
 
 });
 
@@ -28,7 +27,7 @@ When(`admin clicks today option`,()=>{
 
 Then (`admin should see todays data`,()=>{
 
-  cy.get('.sc-ljwYwh')
+  cy.get('.sc-ljwYwh', {timeout:30000})
   .find(':nth-child(1) > a > .ant-card > .ant-card-body > .ant-row > .ant-col')
   .should("have.text", "Day to Day 0%")
 });
@@ -44,7 +43,7 @@ When(`admin clicks yesterday option`,()=>{
 
 Then (`admin should see yesterday data`,()=>{
 
-  cy.get('.sc-ljwYwh')
+  cy.get('.sc-ljwYwh', {timeout:30000})
   .find(':nth-child(1) > a > .ant-card > .ant-card-body > .ant-row > .ant-col')
   .should("have.text", "Day to Day 0%")
 });
@@ -65,7 +64,7 @@ Then (`admin should see this week data`,()=>{
 });
 
 Given(`admin is in dashboard`,() =>{
-  cy.get('.ant-menu').find(':nth-child(2)').should("have.text", "Dashboard")
+  cy.get('.ant-menu',{timeout:30000}).find(':nth-child(2)').should("have.text", "Dashboard")
 });
 
 When(`admin clicks last week option`,()=>{
@@ -80,7 +79,7 @@ Then (`admin should see last week data`,()=>{
 });
 
 Given(`admin is in dashboard`,() =>{
-  cy.get('.ant-menu').find(':nth-child(2)').should("have.text", "Dashboard")
+  cy.get('.ant-menu', {timeout:30000}).find(':nth-child(2)').should("have.text", "Dashboard")
 });
 
 When(`admin clicks this month option`,()=>{
@@ -95,7 +94,7 @@ Then (`admin should see this month data`,()=>{
 });
 
 Given(`admin is in dashboard`,() =>{
-  cy.get('.ant-menu').find(':nth-child(2)').should("have.text", "Dashboard")
+  cy.get('.ant-menu', {timeout:30000}).find(':nth-child(2)').should("have.text", "Dashboard")
 });
 
 When(`admin clicks last month option`,()=>{
@@ -110,7 +109,7 @@ Then (`admin should see last month data`,()=>{
 });
 
 Given(`admin is in dashboard`,() =>{
-  cy.get('.ant-menu').find(':nth-child(2)').should("have.text", "Dashboard")
+  cy.get('.ant-menu', {timeout:30000}).find(':nth-child(2)').should("have.text", "Dashboard")
 });
 
 When(`admin clicks annual option`,()=>{
